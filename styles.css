@@ -1,0 +1,335 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Заголовок */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    font-weight: 300;
+}
+
+/* Панель управления */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+/* Базовые стили кнопок */
+.button-link {
+    background: linear-gradient(145deg, #72caf3, #5fb3d4);
+    border: none;
+    color: #fff;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-height: 45px;
+}
+
+.button-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.button-link img {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+/* Специальные кнопки */
+.install-button {
+    background: linear-gradient(145deg, #6ceca1, #4caf50);
+}
+
+.install-button:hover {
+    background: linear-gradient(145deg, #5dd18e, #45a049);
+}
+
+.delete-button {
+    background: linear-gradient(145deg, #ff6b6b, #e74c3c);
+}
+
+.delete-button:hover {
+    background: linear-gradient(145deg, #ff5252, #c0392b);
+}
+
+.support-button {
+    background: linear-gradient(145deg, #ffd93d, #f39c12);
+}
+
+.support-button:hover {
+    background: linear-gradient(145deg, #ffcd02, #e67e22);
+}
+
+.support-button img {
+    width: 18px;
+    height: auto;
+}
+
+/* Контейнер роботов */
+.robots-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Карточки роботов */
+.robot-group {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.robot-group:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.robot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.robot-header h3 {
+    color: #2c3e50;
+    font-size: 1.4em;
+    margin: 0;
+}
+
+.robot-status {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    min-width: 80px;
+    text-align: center;
+}
+
+.robot-status.installed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.robot-status.not-installed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.robot-description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.robot-params {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #72caf3;
+}
+
+.robot-params strong {
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.robot-params ul {
+    margin-left: 20px;
+    color: #666;
+}
+
+.robot-params li {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.robot-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.robot-actions .button-link {
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+}
+
+/* Футер */
+footer {
+    position: relative;
+    margin-top: 40px;
+}
+
+#image-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#image-container img {
+    width: 120px;
+    height: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+#image-container:hover img {
+    opacity: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .robots-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .robot-actions {
+        flex-direction: column;
+    }
+    
+    .robot-actions .button-link {
+        min-width: auto;
+    }
+    
+    #image-container {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .robot-group {
+        padding: 20px 15px;
+    }
+    
+    .robot-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .button-link {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.robot-group {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.robot-group:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.robot-group:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* Состояния загрузки */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

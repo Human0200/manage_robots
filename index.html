@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BG Robots Manager - Управление роботами Bitrix24</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 BG Robots Manager</h1>
+            <p class="subtitle">Управление роботами для Bitrix24</p>
+        </header>
+
+        <div class="controls">
+            <button id="ListRobots" class="button-link">
+                <img src="http://bg59.online/We/robot.png" alt="robot">
+                Показать всех роботов
+            </button>
+            <a href="https://bg59.ru/#b4494" target="_blank" class="button-link support-button">
+                <img src="http://bg59.online/We/support.png" alt="Иконка тех.поддержка">
+                Поддержка
+            </a>
+        </div>
+
+        <div class="robots-container">
+            <!-- Робот удаления дубликатов -->
+            <div class="robot-group">
+                <div class="robot-header">
+                    <h3>🗂️ Удаление дубликатов</h3>
+                    <div class="robot-status" id="status-duplicate"></div>
+                </div>
+                <p class="robot-description">
+                    <strong>Назначение:</strong> Анализирует данные по ключевым полям (контакты, телефоны, email, названия) и оставляет только один актуальный элемент, очищая CRM от лишних записей. Для удаления дубликата необходимо совпадение по комментарию и контакту, либо почты или телефону.
+                </p>
+                <div class="robot-params">
+                    <strong>Параметры:</strong>
+                    <ul>
+                        <li>ID элемента для сохранения</li>
+                        <li>Тип элемента (лид/сделка)</li>
+                        <li>Тип удаления (этот элемент/все другие)</li>
+                    </ul>
+                </div>
+                <div class="robot-actions">
+                    <button id="createDuplicateButton" class="button-link install-button">
+                        <img src="http://bg59.online/We/robotadd.png" alt="Установить">
+                        Установить
+                    </button>
+                    <button id="deleteDuplicateButton" class="button-link delete-button">
+                        <img src="http://bg59.online/We/robotdel.png" alt="Удалить">
+                        Удалить
+                    </button>
+                </div>
+            </div>
+
+            <!-- Робот записи результата задачи -->
+            <div class="robot-group">
+                <div class="robot-header">
+                    <h3>📋 Запись результата задачи</h3>
+                    <div class="robot-status" id="status-task"></div>
+                </div>
+                <p class="robot-description">
+                    <strong>Назначение:</strong> Получает файл из результата задачи и записывает его в указанное поле сущности (лид, контакт, компания, сделка, смарт-процесс). Если файла нет - записывает текстовое описание задачи.
+                </p>
+                <div class="robot-params">
+                    <strong>Параметры:</strong>
+                    <ul>
+                        <li>ID задачи</li>
+                        <li>Тип сущности (лид/контакт/компания/сделка/смарт-процесс)</li>
+                        <li>ID сущности</li>
+                        <li>Код поля для записи</li>
+                        <li>ID смарт-процесса (опционально)</li>
+                    </ul>
+                </div>
+                <div class="robot-actions">
+                    <button id="createTaskResultButton" class="button-link install-button">
+                        <img src="http://bg59.online/We/robotadd.png" alt="Установить">
+                        Установить
+                    </button>
+                    <button id="deleteTaskResultButton" class="button-link delete-button">
+                        <img src="http://bg59.online/We/robotdel.png" alt="Удалить">
+                        Удалить
+                    </button>
+                </div>
+            </div>
+
+            <!-- Робот привязки контакта -->
+            <div class="robot-group">
+                <div class="robot-header">
+                    <h3>📞 Привязка контакта по телефону</h3>
+                    <div class="robot-status" id="status-attach"></div>
+                </div>
+                <p class="robot-description">
+                    <strong>Назначение:</strong> Автоматически находит контакт по номеру телефона и привязывает его к лиду или сделке. Поддерживает поиск как по точному номеру, так и по очищенному от символов.
+                </p>
+                <div class="robot-params">
+                    <strong>Параметры:</strong>
+                    <ul>
+                        <li>ID сущности (лид/сделка)</li>
+                        <li>Номер телефона для поиска</li>
+                        <li>Тип сущности (лид/сделка)</li>
+                    </ul>
+                </div>
+                <div class="robot-actions">
+                    <button id="createAttachButton" class="button-link install-button">
+                        <img src="http://bg59.online/We/robotadd.png" alt="Установить">
+                        Установить
+                    </button>
+                    <button id="deleteAttachButton" class="button-link delete-button">
+                        <img src="http://bg59.online/We/robotdel.png" alt="Удалить">
+                        Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div id="image-container">
+                <a href="https://bg59.ru/" target="_blank">
+                    <img src="https://cdn-ru.bitrix24.ru/b17983416/landing/b3e/b3ed502d3b66707a7dfa75d74a2e8be6/Logotip_BG_bukvy_1x.png" alt="BG Logo">
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn-ru.bitrix24.ru/b17983416/crm/site_button/loader_8_17zzp3.js');
+    </script>
+    <script src="//api.bitrix24.com/api/v1/"></script>
+    <script src="app.js"></script>
+</body>
+</html>
