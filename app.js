@@ -1,5 +1,5 @@
 /**
- * BG Robots Manager - Управление роботами Bitrix24
+ * Test Robots Manager - Управление роботами Bitrix24
  * Основной файл JavaScript для управления роботами
  */
 
@@ -8,20 +8,20 @@ class RobotsManager {
         this.robots = {
             duplicate: {
                 code: 'robot_delete_duplicate',
-                name: 'Удалить дубликаты(BG)',
-                handler: 'https://bg59.online/Apps/DeleteDuplicate.php',
+                name: 'Удалить дубликаты(Test)',
+                handler: 'https://test.online/Apps/DeleteDuplicate.php',
                 statusElement: 'status-duplicate'
             },
             taskResult: {
                 code: 'robot_task_result_to_entity',
-                name: 'Записать результат задачи в сущность(BG)',
-                handler: 'https://bg59.online/Apps/TaskResultToEntity.php',
+                name: 'Записать результат задачи в сущность(Test)',
+                handler: 'https://test.online/Apps/TaskResultToEntity.php',
                 statusElement: 'status-task'
             },
             attachContact: {
                 code: 'robot_attach_contact_to_lead',
-                name: 'Привязать контакт по телефону(BG)',
-                handler: 'https://bg59.online/Apps/attachcontacttolead.php',
+                name: 'Привязать контакт по телефону(Test)',
+                handler: 'https://test.online/Apps/attachcontacttolead.php',
                 statusElement: 'status-attach'
             }
         };
