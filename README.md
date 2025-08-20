@@ -5,7 +5,7 @@
 ## 📋 Структура проекта
 
 ```
-test-robots-manager/
+manage_robots/
 ├── index.html              # Главная страница приложения
 ├── styles.css              # Стили интерфейса
 ├── app.js                  # Основная логика JavaScript
