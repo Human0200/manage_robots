@@ -74,36 +74,46 @@ if (!$task || !isset($task['result']['task'])) {
 $taskData = $task['result']['task'];
 logToFile(['task_data' => $taskData]);
 
-// 2. Получаем файлы из результата задачи
-$taskFiles = callB24Api("tasks.task.files.get", ['taskId' => $task_id], $access_token, $domain);
-if (!$taskFiles || !isset($taskFiles['result'])) {
-    logToFile("Ошибка: Не удалось получить файлы задачи #{$task_id}");
-    $taskFiles = ['result' => []]; // Пустой массив для продолжения работы
+// 2. Получаем результаты задачи
+$taskResults = callB24Api("tasks.task.result.list", ['taskId' => $task_id], $access_token, $domain);
+if (!$taskResults || !isset($taskResults['result'])) {
+    logToFile("Ошибка: Не удалось получить результаты задачи #{$task_id}");
+    $taskResults = ['result' => []]; // Пустой массив для продолжения работы
 }
 
-$files = $taskFiles['result'];
-logToFile(['task_files' => $files]);
+$results = $taskResults['result'];
+logToFile(['task_results' => $results]);
 
 // 3. Формируем данные для записи в поле
 $fileData = [];
 $textData = '';
 
-// Если есть файлы, берем первый файл
-if (!empty($files)) {
-    $file = $files[0];
-    $fileData = [
-        'fileData' => [
-            $file['ATTACHMENT_ID'],
-            $file['NAME']
-        ]
-    ];
+// Если есть результаты, обрабатываем их
+if (!empty($results)) {
+    $result = $results[0]; // Берем первый результат
     
-    // Также добавляем текстовую информацию о файле
-    $textData = "Файл: " . $file['NAME'] . " (ID: " . $file['ATTACHMENT_ID'] . ")";
+    // Проверяем, есть ли файлы в результате
+    if (!empty($result['FILES'])) {
+        $file = $result['FILES'][0]; // Берем первый файл
+        $fileData = [
+            'fileData' => [
+                $file['FILE_ID'],
+                $file['NAME']
+            ]
+        ];
+        
+        // Также добавляем текстовую информацию о файле
+        $textData = "Файл: " . $file['NAME'] . " (ID: " . $file['FILE_ID'] . ")";
+    }
+    
+    // Если файлов нет, но есть текстовый результат
+    if (empty($fileData) && !empty($result['TEXT'])) {
+        $textData = $result['TEXT'];
+    }
 }
 
-// Если нет файлов, используем описание задачи или результат
-if (empty($fileData)) {
+// Если нет результатов, используем описание задачи
+if (empty($fileData) && empty($textData)) {
     $textData = !empty($taskData['DESCRIPTION']) ? $taskData['DESCRIPTION'] : 'Результат задачи получен';
 }
 
@@ -176,7 +186,8 @@ if ($updateResult && isset($updateResult['result']) && $updateResult['result']) 
         'entity_id' => $entity_id,
         'field_code' => $field_code,
         'has_file' => !empty($fileData),
-        'data_written' => !empty($fileData) ? 'file' : 'text'
+        'data_written' => !empty($fileData) ? 'file' : 'text',
+        'results_count' => count($results)
     ];
     
     logToFile(['success' => $response]);

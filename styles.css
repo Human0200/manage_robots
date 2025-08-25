@@ -61,6 +61,8 @@ header h1 {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    gap: 8px;
     font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
@@ -80,6 +82,12 @@ header h1 {
     margin-right: 8px;
     width: 20px;
     height: 20px;
+}
+
+/* Стили для эмоджи в кнопках */
+.button-link > span {
+    font-size: 18px;
+    line-height: 1;
 }
 
 /* Специальные кнопки */
@@ -110,6 +118,21 @@ header h1 {
 .support-button img {
     width: 18px;
     height: auto;
+}
+
+/* Обновленные стили для футера */
+#image-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-size: 48px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+#image-container:hover {
+    opacity: 1;
 }
 
 /* Контейнер роботов */
